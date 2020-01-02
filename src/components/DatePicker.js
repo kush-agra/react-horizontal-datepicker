@@ -23,15 +23,12 @@ export default function DatePicker() {
     const [currentDate] = useState(new Date());
     const getStyles = (day) => {
         const classes = [];
-
         if (isSameDay(day,selectedDate)) {
             classes.push('DateDayItem--selected')
         }
         if(isBefore(day,currentDate)) {
             classes.push('DateDayItem--disabled')
         }
-
-
         return classes.join(' ')
     };
 
@@ -62,7 +59,11 @@ export default function DatePicker() {
 
     function renderCells() {}
 
-    const onDateClick = day => {setSelectedDate(day);console.log(day)};
+    const onDateClick = day => {
+        if(!isBefore(day,currentDate)){
+            setSelectedDate(day);
+        }
+    };
 
     const nextWeek = () => {setCurrentWeek(addWeeks(currentWeek,1))};
 
