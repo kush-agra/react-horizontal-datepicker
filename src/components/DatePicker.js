@@ -110,12 +110,3 @@ export default function DatePicker(props) {
         </div>
     )
 }
-
-
-
-
-
-
-
-//todo: lastSelectedDate ahead disabled, endDate ahead not shown
-//todo: npm run publish:npm and npm publish
