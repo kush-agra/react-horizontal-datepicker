@@ -8,7 +8,7 @@ Run `yarn add react-horizontal-datepicker`
 
 ### Usage
 
-#####Import:
+Import:
 
 `import DatePicker from "react-horizontal-datepicker";`
 
