@@ -1,36 +1,33 @@
-/* eslint-disable no-unused-vars */
-import React, {useState} from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useEffect, useState} from "react";
 import { Waypoint } from 'react-waypoint';
 import "./datepicker.css"
 import {
     format,
-    addMonths,
     addWeeks,
     subWeeks,
-    subMonths,
-    startOfWeek,
     addDays,
-    startOfMonth,
-    getDay,
     subDays,
     isSameDay,
     isBefore,
-    getDate,
-    parse
+    getDate
 
 } from "date-fns";
 
-export default function DatePicker() {
+export default function DatePicker(props) {
     const [selectedDate, setSelectedDate] = useState(new Date());
+    const [softSelect, setSoftSelect] = useState(new Date());
     const [currentWeek, setCurrentWeek] = useState(new Date());
     const [currentDate] = useState(new Date());
-    const scroll = true;
+    const {endDate, shouldScroll} = props;
+    let scroll = false;
+    shouldScroll === true? scroll = true : scroll = false;
     let maxValue;
     if (scroll===false){
         maxValue = 7;
     }
     else{
-        maxValue = 90;
+        maxValue = endDate | 90;
     }
     const getStyles = (day) => {
         const classes = [];
@@ -51,10 +48,9 @@ export default function DatePicker() {
             return('Datepicker--DateList');
         }
     };
-
     function renderDays() {
         const dayFormat = "E";
-        const dateFormat = "dd";
+        const dateFormat = "d";
         const days = [];
         let startDay = subDays(currentWeek,3);
         for (let i = 0; i < maxValue; i++) {
@@ -63,7 +59,9 @@ export default function DatePicker() {
                      key={i*i+2}
                      onClick={() => onDateClick(addDays(startDay, i))}
                 >
-                    {getDate(addDays(startDay,i)) === 1? <Waypoint horizontal={true} onEnter={()=>(console.log('y'))}/> : null}
+                    {getDate(addDays(startDay,i)) === 1? <Waypoint horizontal={true} onEnter={()=>(setSoftSelect(addDays(startDay,i)))}/> : null}
+                    {getDate(addDays(startDay,i)) === 20? <Waypoint horizontal={true} onEnter={()=>(setSoftSelect(addDays(startDay,i)))}/> : null}
+                    {isSameDay(addDays(startDay,i),currentDate)? <Waypoint horizontal={true} onEnter={()=>(setSoftSelect(addDays(startDay,i)))}/> : null}
                     <div className={"Datepicker--DayLabel"} key={i}>
                         {format(addDays(startDay, i), dayFormat)}
                     </div>
@@ -79,24 +77,36 @@ export default function DatePicker() {
     const onDateClick = day => {
         if(!isBefore(day,currentDate)){
             setSelectedDate(day);
+            if(props.getSelectedDay) {
+                props.getSelectedDay(day);
+            }
         }
     };
+
+    useEffect(()=>{
+        if(props.getSelectedDay) {
+            props.getSelectedDay(new Date());
+        }
+    },[]);
     const nextWeek = () => {scroll ? document.getElementById('container').scrollLeft += 700 : setCurrentWeek(addWeeks(currentWeek,1))};
 
     const prevWeek = () => {scroll ? document.getElementById('container').scrollLeft -= 700 : setCurrentWeek(subWeeks(currentWeek,1))};
 
     // noinspection SpellCheckingInspection
-    const dateFormat = "MMMM";
+    const dateFormat = "MMMM yyyy";
     return(
         <div>
-     <div className={"Datepicker--Strip"}>
-         <span>{format(currentWeek, dateFormat)}</span>
-         <div className={"Datepicker"}>
-             <button onClick={prevWeek}>Previous</button>
-            {renderDays()}
-            <button onClick={nextWeek}>Next</button>
+         <div className={"Datepicker--Strip"}>
+             <span className={"Datepicker--MonthYearLabel"}>
+                 {scroll? format(softSelect, dateFormat): format(currentWeek, dateFormat)}
+                 {/*{!scroll? isSameMonth(softSelect,currentWeek)? null: " / " + format(softSelect, dateFormat) : null}*/}
+             </span>
+             <div className={"Datepicker"}>
+                 <button className={"Datepicker--button-prev"} onClick={prevWeek}>←</button>
+                {renderDays()}
+                <button className={"Datepicker--button-next"} onClick={nextWeek}>→</button>
+             </div>
          </div>
-     </div>
         </div>
     )
 }
