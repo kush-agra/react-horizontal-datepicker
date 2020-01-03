@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="981c5613-c317-4d6d-aa33-5280dd2b9d1d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +84,7 @@
       <updated>1577950527720</updated>
       <workItem from="1577950530711" duration="1701000" />
       <workItem from="1577956608331" duration="31062000" />
-      <workItem from="1578056863040" duration="22000" />
+      <workItem from="1578056863040" duration="559000" />
     </task>
     <task id="LOCAL-00001" summary="Initial working commit with selection and disabled states styling">
       <created>1577970627028</created>
@@ -150,11 +149,36 @@
       <option name="project" value="LOCAL" />
       <updated>1578056186462</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="props passed params working styling done,set for initial release">
+      <created>1578056891175</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1578056891175</updated>
+    </task>
+    <task id="LOCAL-00011" summary="props passed params working styling done,set for initial release">
+      <created>1578056916404</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1578056916404</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial working commit with selection and disabled states styling" />
@@ -168,10 +192,14 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1577956998921" />
-    <state x="307" y="50" key="CommitChangelistDialog2" timestamp="1578056890875">
+    <state x="307" y="50" key="CommitChangelistDialog2" timestamp="1578056916131">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="307" y="50" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1578056890875" />
+    <state x="307" y="50" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1578056916131" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1578057521261">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1578057521261" />
     <state width="1419" height="153" key="GridCell.Tab.0.bottom" timestamp="1578056612065">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -188,9 +216,9 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1419" height="153" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578056612063" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1578056896638">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1578056919656">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1578056896638" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1578056919656" />
   </component>
 </project>
