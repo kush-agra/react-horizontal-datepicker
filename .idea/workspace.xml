@@ -222,10 +222,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="470" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1578065473884" />
-    <state x="307" y="50" key="CommitChangelistDialog2" timestamp="1578065846431">
+    <state x="307" y="50" key="CommitChangelistDialog2" timestamp="1578065891370">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="307" y="50" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1578065846431" />
+    <state x="307" y="50" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1578065891370" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1578065862984">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -246,10 +246,14 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1419" height="153" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578056612063" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1578065863020">
+    <state x="436" y="173" key="MultipleFileMergeDialog" timestamp="1578065915176">
+      <screen x="0" y="23" width="1440" height="810" />
+    </state>
+    <state x="436" y="173" key="MultipleFileMergeDialog/0.23.1440.810@0.23.1440.810" timestamp="1578065915176" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1578065894611">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1578065863020" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1578065894611" />
     <state x="525" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578065222662">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
