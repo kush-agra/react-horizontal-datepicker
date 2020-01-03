@@ -1,5 +1,5 @@
 ## react-horizontal-datepicker
-
+A fully style-able horizontal date picker with the option to scroll
 ![Example](https://i.imgur.com/oe3WEGF.jpg)
 
 ### Installation
