@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="981c5613-c317-4d6d-aa33-5280dd2b9d1d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DatePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DatePicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/datepicker.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/datepicker.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1577950527720</updated>
       <workItem from="1577950530711" duration="1701000" />
-      <workItem from="1577956608331" duration="10663000" />
+      <workItem from="1577956608331" duration="18842000" />
     </task>
     <task id="LOCAL-00001" summary="Initial working commit with selection and disabled states styling">
       <created>1577970627028</created>
@@ -91,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577970627028</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="older than current dates disabled">
+      <created>1577971039960</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1577971039960</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,32 +116,33 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial working commit with selection and disabled states styling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial working commit with selection and disabled states styling" />
+    <MESSAGE value="older than current dates disabled" />
+    <option name="LAST_COMMIT_MESSAGE" value="older than current dates disabled" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577956998921">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1577956998921" />
-    <state x="307" y="50" key="CommitChangelistDialog2" timestamp="1577970626616">
+    <state x="307" y="50" key="CommitChangelistDialog2" timestamp="1577971039721">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="307" y="50" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1577970626616" />
-    <state width="1419" height="153" key="GridCell.Tab.0.bottom" timestamp="1577961946764">
+    <state x="307" y="50" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1577971039721" />
+    <state width="1419" height="153" key="GridCell.Tab.0.bottom" timestamp="1578031968138">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="153" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1577961946764" />
-    <state width="1419" height="153" key="GridCell.Tab.0.center" timestamp="1577961946762">
+    <state width="1419" height="153" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578031968138" />
+    <state width="1419" height="153" key="GridCell.Tab.0.center" timestamp="1578031968135">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="153" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1577961946762" />
-    <state width="1419" height="153" key="GridCell.Tab.0.left" timestamp="1577961946760">
+    <state width="1419" height="153" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578031968135" />
+    <state width="1419" height="153" key="GridCell.Tab.0.left" timestamp="1578031968134">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="153" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1577961946760" />
-    <state width="1419" height="153" key="GridCell.Tab.0.right" timestamp="1577961946763">
+    <state width="1419" height="153" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578031968134" />
+    <state width="1419" height="153" key="GridCell.Tab.0.right" timestamp="1578031968137">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="153" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1577961946763" />
+    <state width="1419" height="153" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578031968137" />
   </component>
 </project>

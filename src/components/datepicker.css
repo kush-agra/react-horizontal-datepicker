@@ -11,9 +11,12 @@
 
 .Datepicker--Strip {
     display: flex;
-    align-items: center;
+    /*align-items: center;*/
     flex-direction: column;
     margin-top: 10px;
+    width: max-content;
+    max-width: 60%;
+    overflow: hidden;
 }
 
 .DateDayItem--selected {
@@ -26,4 +29,16 @@
 
 .Datepicker--DateList--scrollable {
     display: flex;
+    overflow-x: scroll;
+    scrollbar-width: none;
+
+}
+
+.Datepicker{
+    display: flex;
+    margin-top: 12px;
+}
+
+.Datepicker--DayLabel{
+    font-size: 15px;
 }

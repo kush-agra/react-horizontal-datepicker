@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React, {useState} from "react";
+import { Waypoint } from 'react-waypoint';
 import "./datepicker.css"
 import {
     format,
@@ -13,6 +15,7 @@ import {
     subDays,
     isSameDay,
     isBefore,
+    getDate,
     parse
 
 } from "date-fns";
@@ -21,6 +24,14 @@ export default function DatePicker() {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [currentWeek, setCurrentWeek] = useState(new Date());
     const [currentDate] = useState(new Date());
+    const scroll = true;
+    let maxValue;
+    if (scroll===false){
+        maxValue = 7;
+    }
+    else{
+        maxValue = 90;
+    }
     const getStyles = (day) => {
         const classes = [];
         if (isSameDay(day,selectedDate)) {
@@ -31,18 +42,28 @@ export default function DatePicker() {
         }
         return classes.join(' ')
     };
+    const getScroll = () => {
+        if(scroll === true){
+            return('Datepicker--DateList--scrollable');
+        }
+        else{
+            maxValue = 7;
+            return('Datepicker--DateList');
+        }
+    };
 
     function renderDays() {
         const dayFormat = "E";
         const dateFormat = "dd";
         const days = [];
         let startDay = subDays(currentWeek,3);
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < maxValue; i++) {
             days.push(
                 <div className={`Datepicker--DateDayItem ${getStyles(addDays(startDay, i))}`}
                      key={i*i+2}
                      onClick={() => onDateClick(addDays(startDay, i))}
                 >
+                    {getDate(addDays(startDay,i)) === 1? <Waypoint horizontal={true} onEnter={()=>(console.log('y'))}/> : null}
                     <div className={"Datepicker--DayLabel"} key={i}>
                         {format(addDays(startDay, i), dayFormat)}
                     </div>
@@ -52,34 +73,31 @@ export default function DatePicker() {
                 </div>
             );
         }
-
-        // let startDay = getDay(currentWeek);
-        return <div className={"Datepicker--DateList"}>{days}</div>;
+        return <div id={"container"} className={`${getScroll()}`}>{days}</div>;
     }
-
-    function renderCells() {}
 
     const onDateClick = day => {
         if(!isBefore(day,currentDate)){
             setSelectedDate(day);
         }
     };
+    const nextWeek = () => {scroll ? document.getElementById('container').scrollLeft += 700 : setCurrentWeek(addWeeks(currentWeek,1))};
 
-    const nextWeek = () => {setCurrentWeek(addWeeks(currentWeek,1))};
+    const prevWeek = () => {scroll ? document.getElementById('container').scrollLeft -= 700 : setCurrentWeek(subWeeks(currentWeek,1))};
 
-    const prevWeek = () => {setCurrentWeek(subWeeks(currentWeek,1))};
-
-    const dateFormat = "MMMM yyyy";
+    // noinspection SpellCheckingInspection
+    const dateFormat = "MMMM";
     return(
+        <div>
      <div className={"Datepicker--Strip"}>
-         {format(currentWeek, dateFormat)}
-         <div style={{display: 'flex', marginTop: '10px'}}>
-         <button onClick={prevWeek}>Previous</button>
-         {renderDays()}
-         <button onClick={nextWeek}>Next</button>
+         <span>{format(currentWeek, dateFormat)}</span>
+         <div className={"Datepicker"}>
+             <button onClick={prevWeek}>Previous</button>
+            {renderDays()}
+            <button onClick={nextWeek}>Next</button>
          </div>
-         {renderCells()}
      </div>
+        </div>
     )
 }
 
