@@ -1,6 +1,13 @@
 {
   "name": "react-horizontal-datepicker",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "homepage": "https://github.com/kush-agra/react-horizontal-datepicker",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/kush-agra/react-horizontal-datepicker.git"
+  },
+  "keywords": [
+    "react","date-picker","horizontal-calendar","side-scrolling","calendar-strip"],
   "private": false,
   "babel": {
     "presets": [
