@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="981c5613-c317-4d6d-aa33-5280dd2b9d1d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +83,7 @@
       <updated>1577950527720</updated>
       <workItem from="1577950530711" duration="1701000" />
       <workItem from="1577956608331" duration="31062000" />
-      <workItem from="1578056863040" duration="1923000" />
+      <workItem from="1578056863040" duration="2069000" />
     </task>
     <task id="LOCAL-00001" summary="Initial working commit with selection and disabled states styling">
       <created>1577970627028</created>
@@ -172,7 +169,21 @@
       <option name="project" value="LOCAL" />
       <updated>1578064160866</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="LICENSE">
+      <created>1578065783481</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1578065783481</updated>
+    </task>
+    <task id="LOCAL-00014" summary="LICENSE">
+      <created>1578065846663</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1578065846663</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,7 +207,8 @@
     <MESSAGE value="Scroll working with bool plus waypoints?" />
     <MESSAGE value="props passed params working styling done,set for initial release" />
     <MESSAGE value="npm release fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="npm release fixes" />
+    <MESSAGE value="LICENSE" />
+    <option name="LAST_COMMIT_MESSAGE" value="LICENSE" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -210,14 +222,14 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="470" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1578065473884" />
-    <state x="307" y="50" key="CommitChangelistDialog2" timestamp="1578065824118">
+    <state x="307" y="50" key="CommitChangelistDialog2" timestamp="1578065846431">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="307" y="50" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1578065824118" />
-    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1578057521261">
+    <state x="307" y="50" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1578065846431" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1578065862984">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1578057521261" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1578065862984" />
     <state width="1419" height="153" key="GridCell.Tab.0.bottom" timestamp="1578056612065">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -234,10 +246,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1419" height="153" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578056612063" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1578065795247">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1578065863020">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1578065795247" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1578065863020" />
     <state x="525" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578065222662">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
