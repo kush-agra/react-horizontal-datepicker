@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="981c5613-c317-4d6d-aa33-5280dd2b9d1d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DatePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DatePicker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/datepicker.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/datepicker.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +83,7 @@
       <option name="presentableId" value="Default" />
       <updated>1577950527720</updated>
       <workItem from="1577950530711" duration="1701000" />
-      <workItem from="1577956608331" duration="26618000" />
+      <workItem from="1577956608331" duration="26780000" />
     </task>
     <task id="LOCAL-00001" summary="Initial working commit with selection and disabled states styling">
       <created>1577970627028</created>
@@ -107,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578040415780</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="props passed params working styling done,set for initial release">
+      <created>1578050833994</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1578050833994</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,17 +123,18 @@
     <MESSAGE value="Initial working commit with selection and disabled states styling" />
     <MESSAGE value="older than current dates disabled" />
     <MESSAGE value="Scroll working with bool plus waypoints?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Scroll working with bool plus waypoints?" />
+    <MESSAGE value="props passed params working styling done,set for initial release" />
+    <option name="LAST_COMMIT_MESSAGE" value="props passed params working styling done,set for initial release" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577956998921">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1577956998921" />
-    <state x="307" y="50" key="CommitChangelistDialog2" timestamp="1578040415340">
+    <state x="307" y="50" key="CommitChangelistDialog2" timestamp="1578050833689">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="307" y="50" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1578040415340" />
+    <state x="307" y="50" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1578050833689" />
     <state width="1419" height="153" key="GridCell.Tab.0.bottom" timestamp="1578031968138">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

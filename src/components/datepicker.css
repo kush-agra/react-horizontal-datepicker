@@ -45,6 +45,11 @@
 
 }
 
+.Datepicker--DateList--scrollable::-webkit-scrollbar {
+    -webkit-appearance: none;
+    display: none;
+}
+
 .Datepicker{
     display: flex;
     margin: 12px 0 0 12px;
