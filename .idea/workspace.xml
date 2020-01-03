@@ -83,7 +83,7 @@
       <option name="presentableId" value="Default" />
       <updated>1577950527720</updated>
       <workItem from="1577950530711" duration="1701000" />
-      <workItem from="1577956608331" duration="29463000" />
+      <workItem from="1577956608331" duration="30102000" />
     </task>
     <task id="LOCAL-00001" summary="Initial working commit with selection and disabled states styling">
       <created>1577970627028</created>
@@ -127,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578054625215</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="props passed params working styling done,set for initial release">
+      <created>1578054892266</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1578054892266</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,10 +152,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1577956998921" />
-    <state x="307" y="50" key="CommitChangelistDialog2" timestamp="1578054624935">
+    <state x="307" y="50" key="CommitChangelistDialog2" timestamp="1578054892027">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="307" y="50" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1578054624935" />
+    <state x="307" y="50" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1578054892027" />
     <state width="1419" height="153" key="GridCell.Tab.0.bottom" timestamp="1578031968138">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
