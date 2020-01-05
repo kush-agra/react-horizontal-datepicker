@@ -45,3 +45,5 @@ function App() {
 
 ### Todo
 Add selectors for starting date and disabled dates
+
+incorporate text + normal calendar based date input right in the component
