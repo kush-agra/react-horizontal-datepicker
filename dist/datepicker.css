@@ -20,7 +20,7 @@
     flex-direction: column;
     margin-top: 10px;
     width: max-content;
-    max-width: 60%;
+    max-width: 100%;
     overflow: hidden;
 }
 
@@ -80,4 +80,8 @@
     font-size: 15px;
     color: rgb(77, 123, 243);
     font-weight: bold;
+}
+
+.Datepicker--DateLabel {
+    font-size: 18px;
 }
