@@ -8,7 +8,7 @@ function App() {
     };
   return (
     <div className="App">
-      <DatePicker getSelectedDay={selectedDay}/>
+      <DatePicker getSelectedDay={selectedDay} shouldScroll={true}/>
     </div>
   );
 }
