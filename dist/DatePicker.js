@@ -12,6 +12,9 @@ export default function DatePicker(props) {
     endDate,
     shouldScroll
   } = props;
+  let {
+    selectDate
+  } = props;
   let scroll = false;
   shouldScroll === true ? scroll = true : scroll = false;
   let maxValue;
@@ -36,6 +39,14 @@ export default function DatePicker(props) {
     return classes.join(' ');
   };
 
+  const getId = day => {
+    if (isSameDay(day, selectedDate)) {
+      return 'selected';
+    } else {
+      return "";
+    }
+  };
+
   const getScroll = () => {
     if (scroll === true) {
       return 'Datepicker--DateList--scrollable';
@@ -53,6 +64,7 @@ export default function DatePicker(props) {
 
     for (let i = 0; i < maxValue; i++) {
       days.push(React.createElement("div", {
+        id: `${getId(addDays(startDay, i))}`,
         className: `Datepicker--DateDayItem ${getStyles(addDays(startDay, i))}`,
         key: i * i + 2,
         onClick: () => onDateClick(addDays(startDay, i))
@@ -82,6 +94,7 @@ export default function DatePicker(props) {
 
   const onDateClick = day => {
     if (!isBefore(day, currentDate)) {
+      selectDate = null;
       setSelectedDate(day);
 
       if (props.getSelectedDay) {
@@ -92,16 +105,41 @@ export default function DatePicker(props) {
 
   useEffect(() => {
     if (props.getSelectedDay) {
-      props.getSelectedDay(new Date());
+      if (selectDate) {
+        props.getSelectedDay(selectDate);
+      } else {
+        props.getSelectedDay(new Date());
+      }
     }
   }, []);
+  useEffect(() => {
+    if (selectDate) {
+      if (!isSameDay(selectedDate, selectDate)) {
+        setSelectedDate(selectDate);
+        setTimeout(() => {
+          let view = document.getElementById('selected');
+          console.log(view);
+
+          if (view) {
+            view.scrollIntoView({
+              behavior: "smooth",
+              inline: "center"
+            });
+            view.scrollLeft += width;
+          }
+        }, 500);
+      }
+    }
+  }, [selectDate]);
+  let e = document.getElementById('container');
+  let width = e ? e.getBoundingClientRect().width : null;
 
   const nextWeek = () => {
-    scroll ? document.getElementById('container').scrollLeft += 700 : setCurrentWeek(addWeeks(currentWeek, 1));
+    scroll ? document.getElementById('container').scrollLeft += width : setCurrentWeek(addWeeks(currentWeek, 1));
   };
 
   const prevWeek = () => {
-    scroll ? document.getElementById('container').scrollLeft -= 700 : setCurrentWeek(subWeeks(currentWeek, 1));
+    scroll ? document.getElementById('container').scrollLeft -= width : setCurrentWeek(subWeeks(currentWeek, 1));
   }; // noinspection SpellCheckingInspection
 
 

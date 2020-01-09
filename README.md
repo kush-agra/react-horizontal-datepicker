@@ -25,6 +25,7 @@ Available Props are
 | shouldScroll  | Boolean | false    | Set List to be scrollable |
 | getSelectedDay| Function|          | Function to get the selected Day |
 | endDate       | Number  |   90     | Number of days to render from current date   |
+| selectDate    | Date    |          | prop to send selected date manually or from another calendar component |
 
 endDate currently has no effect on non scrolling list
 
@@ -38,7 +39,11 @@ function App() {
     };
 
   return (
-      <DatePicker getSelectedDay={selectedDay} shouldScroll={true} endDate={100}/>
+      <DatePicker getSelectedDay={selectedDay}
+                  shouldScroll={true}
+                  endDate={100}
+                  selectDate={new Date("2020-01-30")}              
+/>
   );
 }
 ```
@@ -46,4 +51,3 @@ function App() {
 ### Todo
 Add selectors for starting date and disabled dates
 
-incorporate text + normal calendar based date input right in the component
