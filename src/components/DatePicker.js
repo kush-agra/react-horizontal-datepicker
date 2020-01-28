@@ -102,12 +102,10 @@ export default function DatePicker(props) {
                 setSelectedDate(selectDate);
                 setTimeout(() => {
                     let view = document.getElementById('selected');
-                    console.log(view);
                     if (view) {
-                        view.scrollIntoView({behavior: "smooth", inline: "center"});
-                        view.scrollLeft += (width);
+                        view.scrollIntoView({behavior: "smooth", inline: "center", block: "nearest"});
                     }
-                }, 500);
+                }, 20);
             }
         }
     }, [selectDate]);
@@ -127,7 +125,7 @@ export default function DatePicker(props) {
     // noinspection SpellCheckingInspection
     const dateFormat = "MMMM yyyy";
     return (
-        <div>
+        <div className={"Datepicker--Container"}>
             <div className={"Datepicker--Strip"}>
              <span className={"Datepicker--MonthYearLabel"}>
                  {scroll ? format(softSelect, dateFormat) : format(currentWeek, dateFormat)}

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Waypoint } from 'react-waypoint';
 import "./datepicker.css";
-import { format, addWeeks, subWeeks, addDays, subDays, isSameDay, isBefore, getDate } from "date-fns";
+import { addDays, addWeeks, format, getDate, isBefore, isSameDay, subDays, subWeeks } from "date-fns";
 export default function DatePicker(props) {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [softSelect, setSoftSelect] = useState(new Date());
@@ -118,16 +118,14 @@ export default function DatePicker(props) {
         setSelectedDate(selectDate);
         setTimeout(() => {
           let view = document.getElementById('selected');
-          console.log(view);
 
           if (view) {
             view.scrollIntoView({
               behavior: "smooth",
               inline: "center"
             });
-            view.scrollLeft += width;
           }
-        }, 500);
+        }, 20);
       }
     }
   }, [selectDate]);
