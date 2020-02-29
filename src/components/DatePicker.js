@@ -2,7 +2,18 @@
 import React, {useEffect, useState} from "react";
 import {Waypoint} from 'react-waypoint';
 import "./datepicker.css"
-import {addDays, addWeeks, format, getDate, isBefore, isSameDay, subDays, subWeeks} from "date-fns";
+import {
+    addDays,
+    addWeeks,
+    differenceInDays,
+    format,
+    getDate,
+    isBefore,
+    isSameDay,
+    lastDayOfMonth,
+    subDays,
+    subWeeks
+} from "date-fns";
 
 export default function DatePicker(props) {
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -14,12 +25,14 @@ export default function DatePicker(props) {
     let scroll = false;
     shouldScroll === true? scroll = true : scroll = false;
     let maxValue;
+
     if (scroll===false){
         maxValue = 7;
     }
     else{
         maxValue = endDate | 90;
     }
+
     const getStyles = (day) => {
         const classes = [];
         if (isSameDay(day, selectedDate)) {
@@ -30,6 +43,7 @@ export default function DatePicker(props) {
         }
         return classes.join(' ')
     };
+
     const getId = (day) => {
         if (isSameDay(day, selectedDate)) {
             return ('selected')
@@ -37,6 +51,7 @@ export default function DatePicker(props) {
             return ("")
         }
     };
+
     const getScroll = () => {
         if (scroll === true) {
             return ('Datepicker--DateList--scrollable');
@@ -50,27 +65,33 @@ export default function DatePicker(props) {
         const dayFormat = "E";
         const dateFormat = "d";
         const days = [];
-        let startDay = subDays(currentWeek,3);
-        for (let i = 0; i < maxValue; i++) {
+        let startDay = subDays(currentWeek, 3);
+        console.log(lastDayOfMonth(new Date(2020, 3, 1, 0, 1)));
+        console.log(Number(format(differenceInDays(lastDayOfMonth(new Date(2020, 3, 1, 0, 1)), new Date()), dateFormat)));
+
+
+        for (let i = 0; i < Number(format(lastDayOfMonth(addDays(startDay, 10)), dateFormat)); i++) {
             days.push(
-                <div id={`${getId(addDays(startDay, i))}`}
-                     className={`Datepicker--DateDayItem ${getStyles(addDays(startDay, i))}`}
-                     key={i * i + 2}
-                     onClick={() => onDateClick(addDays(startDay, i))}
-                >
+                <>
                     {getDate(addDays(startDay, i)) === 1 ?
-                        <Waypoint horizontal={true} onEnter={() => (setSoftSelect(addDays(startDay, i)))}/> : null}
-                    {getDate(addDays(startDay, i)) === 20 ?
-                        <Waypoint horizontal={true} onEnter={() => (setSoftSelect(addDays(startDay, i)))}/> : null}
-                    {isSameDay(addDays(startDay, i), currentDate) ?
-                        <Waypoint horizontal={true} onEnter={() => (setSoftSelect(addDays(startDay, i)))}/> : null}
-                    <div className={"Datepicker--DayLabel"} key={i}>
-                        {format(addDays(startDay, i), dayFormat)}
+                        <div>s</div> : null}
+                    <div id={`${getId(addDays(startDay, i))}`}
+                         className={`Datepicker--DateDayItem ${getStyles(addDays(startDay, i))}`}
+                         key={i * i + 2}
+                         onClick={() => onDateClick(addDays(startDay, i))}
+                    >
+                        {getDate(addDays(startDay, i)) === 20 ?
+                            <Waypoint horizontal={true} onEnter={() => (setSoftSelect(addDays(startDay, i)))}/> : null}
+                        {isSameDay(addDays(startDay, i), currentDate) ?
+                            <Waypoint horizontal={true} onEnter={() => (setSoftSelect(addDays(startDay, i)))}/> : null}
+                        <div className={"Datepicker--DayLabel"} key={i}>
+                            {format(addDays(startDay, i), dayFormat)}
+                        </div>
+                        <div className={"Datepicker--DateLabel"} key={i * i + 1}>
+                            {format(addDays(startDay, i), dateFormat)}
+                        </div>
                     </div>
-                    <div className={"Datepicker--DateLabel"} key={i * i + 1}>
-                        {format(addDays(startDay, i), dateFormat)}
-                    </div>
-                </div>
+                </>
             );
         }
         return <div id={"container"} className={`${getScroll()}`}>{days}</div>;
@@ -99,7 +120,10 @@ export default function DatePicker(props) {
     useEffect(() => {
         if (selectDate) {
             if (!isSameDay(selectedDate, selectDate)) {
-                setSelectedDate(selectDate);
+                setSelectedDate(selectDate)
+                    .then(() => {
+                        console.log("ess")
+                    });
                 setTimeout(() => {
                     let view = document.getElementById('selected');
                     if (view) {
@@ -129,7 +153,6 @@ export default function DatePicker(props) {
             <div className={"Datepicker--Strip"}>
              <span className={"Datepicker--MonthYearLabel"}>
                  {scroll ? format(softSelect, dateFormat) : format(currentWeek, dateFormat)}
-                 {/*{!scroll? isSameMonth(softSelect,currentWeek)? null: " / " + format(softSelect, dateFormat) : null}*/}
              </span>
                 <div className={"Datepicker"}>
                     <button className={"Datepicker--button-prev"} onClick={prevWeek}>←</button>
