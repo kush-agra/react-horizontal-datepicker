@@ -6,9 +6,10 @@ function App() {
     const selectedDay = (val) =>{
         console.log(val)
     };
+
   return (
     <div className="App">
-      <DatePicker getSelectedDay={selectedDay} shouldScroll={true}/>
+        <DatePicker getSelectedDay={selectedDay}/>
     </div>
   );
 }
