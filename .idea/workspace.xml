@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="981c5613-c317-4d6d-aa33-5280dd2b9d1d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DatePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DatePicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/datepicker.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/datepicker.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +106,7 @@
       <workItem from="1580227048088" duration="2128000" />
       <workItem from="1582988360825" duration="4255000" />
       <workItem from="1583069211824" duration="3639000" />
+      <workItem from="1583137751223" duration="1908000" />
     </task>
     <task id="LOCAL-00001" summary="Initial working commit with selection and disabled states styling">
       <created>1577970627028</created>
@@ -312,25 +312,25 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1582994593876" />
-    <state width="1419" height="233" key="GridCell.Tab.0.bottom" timestamp="1583071966464">
+    <state width="1419" height="233" key="GridCell.Tab.0.bottom" timestamp="1583144393700">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="233" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583071966464" />
+    <state width="1419" height="233" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583144393700" />
     <state width="1419" height="232" key="GridCell.Tab.0.bottom/0.23.1440.810@0.23.1440.810" timestamp="1580229684341" />
-    <state width="1419" height="233" key="GridCell.Tab.0.center" timestamp="1583071966462">
+    <state width="1419" height="233" key="GridCell.Tab.0.center" timestamp="1583144393698">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="233" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1583071966462" />
+    <state width="1419" height="233" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1583144393698" />
     <state width="1419" height="232" key="GridCell.Tab.0.center/0.23.1440.810@0.23.1440.810" timestamp="1580229684340" />
-    <state width="1419" height="233" key="GridCell.Tab.0.left" timestamp="1583071966461">
+    <state width="1419" height="233" key="GridCell.Tab.0.left" timestamp="1583144393696">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="233" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1583071966461" />
+    <state width="1419" height="233" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1583144393696" />
     <state width="1419" height="232" key="GridCell.Tab.0.left/0.23.1440.810@0.23.1440.810" timestamp="1580229684339" />
-    <state width="1419" height="233" key="GridCell.Tab.0.right" timestamp="1583071966463">
+    <state width="1419" height="233" key="GridCell.Tab.0.right" timestamp="1583144393699">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="233" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1583071966463" />
+    <state width="1419" height="233" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1583144393699" />
     <state width="1419" height="232" key="GridCell.Tab.0.right/0.23.1440.810@0.23.1440.810" timestamp="1580229684340" />
     <state x="436" y="173" key="MultipleFileMergeDialog" timestamp="1578065915176">
       <screen x="0" y="23" width="1440" height="810" />
@@ -344,5 +344,9 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="525" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1578065222662" />
+    <state x="480" y="170" key="git4idea.branch.GitSmartOperationDialog" timestamp="1583396393691">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="480" y="170" key="git4idea.branch.GitSmartOperationDialog/0.0.1440.900@0.0.1440.900" timestamp="1583396393691" />
   </component>
 </project>

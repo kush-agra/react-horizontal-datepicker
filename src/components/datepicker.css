@@ -97,3 +97,7 @@
     display: flex;
     width: 100%;
 }
+
+.monthContainer {
+    display: flex;
+}
