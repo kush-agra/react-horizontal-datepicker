@@ -1,14 +1,11 @@
 ## react-horizontal-datepicker
-###### V2 with new logic and completely removing dependancy on react-waypoint as well as leaner code which now uses css-modules
+#### V2 with new logic and completely removing dependency on react-waypoint as well as leaner code which now uses css-modules
 
 A simple and lightweight easily style-able Side scrolling datepicker, built with ❤️
+
 Bundle size of 469 Bytes Minified + Gzipped
 
-|                                     |                                     |
-:------------------------------------ |:------------------------------------:
- ![](https://i.imgur.com/2vawdez.jpg) | ![](https://i.imgur.com/3IYCCPJ.jpg) 
- ![](https://i.imgur.com/0aixw6v.jpg) | ![](https://i.imgur.com/M467k3A.jpg) 
- 
+![](https://user-images.githubusercontent.com/8018852/78461316-7faf3a80-76e5-11ea-919d-cbf600f29092.png) 
 
 ### Installation
 
@@ -63,5 +60,5 @@ function App() {
 ```
 
 ### Todo
-maybe use react window for efficiency
+use react window for efficiency
 
