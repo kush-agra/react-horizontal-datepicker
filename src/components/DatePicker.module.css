@@ -1,0 +1,18 @@
+.button {
+    border: none;
+    text-decoration: none;
+    background: rgb(77, 123, 243);
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin-bottom: 5px;
+}

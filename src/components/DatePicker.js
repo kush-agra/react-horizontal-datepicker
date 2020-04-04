@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from "react";
 import "./datepicker.css"
+import styles from "./DatePicker.module.css"
 import {
     addDays,
     addMonths,
@@ -15,21 +16,21 @@ import {
 export default function DatePicker(props) {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const {endDate, selectDate} = props;
-    let maxValue = endDate || 90;
+    const firstSection = {marginLeft: '40px'};
     const startDate = new Date();
-    const lastDate = addDays(new Date(), maxValue);
-    console.log(selectedDate);
+    const lastDate = addDays(new Date(), endDate || 90);
+    const primaryColor = 'rgb(54, 105, 238)';
+    const selectedStyle = {fontWeight:"bold",width:"45px",height:"45px",borderRadius:"50%",border:`2px solid ${primaryColor}`,color:primaryColor};
+    const buttonColor = {background: primaryColor};
 
     const getStyles = (day) => {
-        // console.log(day);
-        const classes = [];
         if (isSameDay(day, selectedDate)) {
-            classes.push('DateDayItem--selected');
+            return(selectedStyle);
         }
-        if (!isSameDay(day, new Date()) && isBefore(day, new Date())) {
-            classes.push('DateDayItem--disabled')
-        }
-        return classes.join(' ')
+        // if (!isSameDay(day, new Date()) && isBefore(day, new Date())) {
+        //     return('DateDayItem--disabled')
+        // }
+        return null
     };
 
     const getId = (day) => {
@@ -45,20 +46,16 @@ export default function DatePicker(props) {
         const dateFormat = "d";
         const months = [];
         let days = [];
-        // console.log(lastDayOfMonth(new Date(2020, 3, 1, 0, 1)));
-        // console.log(Number(format(differenceInDays(lastDayOfMonth(new Date(2020, 3, 1, 0, 1)), new Date()), dateFormat)));
-
         for (let i = 0; i <= differenceInMonths(lastDate, startDate); i++) {
             let start, end;
             const month = startOfMonth(addMonths(new Date(), i));
             start = i === 0 ? Number(format(startDate, dateFormat)) - 1 : 0;
             end = i === differenceInMonths(lastDate, startDate) ? Number(format(lastDate, "d")) : Number(format(lastDayOfMonth(month), "d"));
-            console.dir({start, i, month, end});
             for (let j = start; j < end; j++) {
-                // console.log(month, j);
                 days.push(
                     <div id={`${getId(addDays(startDate, j))}`}
-                         className={`Datepicker--DateDayItem ${getStyles(addDays(month, j))}`}
+                         className={`Datepicker--DateDayItem`}
+                         style={getStyles(addDays(month, j))}
                          key={addDays(month, j)}
                          onClick={() => onDateClick(addDays(month, j))}
                     >
@@ -73,38 +70,17 @@ export default function DatePicker(props) {
                 );
             }
             months.push(
-                <div className={"monthContainer"}>
-                    <span className={"month"}>
+                <div className={"monthContainer"} key={month}>
+                    <span className={"Datepicker--MonthYearLabel"}>
                         {format(month, "MMMM yyyy")}
                     </span>
-                    <div className={"daysContainer"}>
+                    <div className={"daysContainer"} style={i===0?firstSection:null}>
                         {days}
                     </div>
                 </div>
             );
             days = [];
         }
-
-
-        // for (let i = 0; i < Number(format(lastDayOfMonth(addDays(startDate, 10)), dateFormat)); i++) {
-        //     days.push(
-        //         <>
-        //             <div id={`${getId(addDays(startDate, i))}`}
-        //                  className={`Datepicker--DateDayItem ${getStyles(addDays(startDate, i))}`}
-        //                  key={i * i + 2}
-        //                  onClick={() => onDateClick(addDays(startDate, i))}
-        //             >
-        //                 <div className={"Datepicker--DayLabel"} key={i}>
-        //                     {format(addDays(startDate, i), dayFormat)}
-        //                 </div>
-        //                 <div className={"Datepicker--DateLabel"} key={i * i + 1}>
-        //                     {format(addDays(startDate, i), dateFormat)}
-        //                 </div>
-        //             </div>
-        //         </>
-        //     );
-        // }
-        // console.log(months);
         return <div id={"container"} className={"Datepicker--DateList--scrollable"}>{months}</div>;
     }
 
@@ -156,9 +132,13 @@ export default function DatePicker(props) {
         <div className={"Datepicker--Container"}>
             <div className={"Datepicker--Strip"}>
                 <div className={"Datepicker"}>
-                    <button className={"Datepicker--button-prev"} onClick={prevWeek}>←</button>
+                    <div className={"Datepicker--buttonWrapper"}>
+                        <button className={styles.button} style={buttonColor} onClick={prevWeek}>←</button>
+                    </div>
                     {renderDays()}
-                    <button className={"Datepicker--button-next"} onClick={nextWeek}>→</button>
+                    <div className={"Datepicker--buttonWrapper"}>
+                        <button className={styles.button} style={buttonColor} onClick={nextWeek}>→</button>
+                    </div>
                 </div>
             </div>
         </div>

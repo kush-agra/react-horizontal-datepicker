@@ -4,7 +4,7 @@ import DatePicker from "./components/DatePicker";
 
 function App() {
     const selectedDay = (val) =>{
-        // console.log(val)
+        console.log(val)
     };
 
   return (
