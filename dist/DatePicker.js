@@ -1,42 +1,42 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { Waypoint } from 'react-waypoint';
-import "./datepicker.css";
-import { addDays, addWeeks, format, getDate, isBefore, isSameDay, subDays, subWeeks } from "date-fns";
-export default function DatePicker(props) {
+import styles from "./DatePicker.module.css";
+import { addDays, addMonths, differenceInMonths, format, isSameDay, lastDayOfMonth, startOfMonth } from "date-fns";
+export default function DatePicker({
+  endDate,
+  selectDate,
+  getSelectedDay,
+  color,
+  labelFormat
+}) {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [softSelect, setSoftSelect] = useState(new Date());
-  const [currentWeek, setCurrentWeek] = useState(new Date());
-  const [currentDate] = useState(new Date());
-  const {
-    endDate,
-    shouldScroll
-  } = props;
-  let {
-    selectDate
-  } = props;
-  let scroll = false;
-  shouldScroll === true ? scroll = true : scroll = false;
-  let maxValue;
-
-  if (scroll === false) {
-    maxValue = 7;
-  } else {
-    maxValue = endDate | 90;
-  }
+  const firstSection = {
+    marginLeft: '40px'
+  };
+  const startDate = new Date();
+  const lastDate = addDays(startDate, endDate || 90);
+  const primaryColor = color || 'rgb(54, 105, 238)';
+  const selectedStyle = {
+    fontWeight: "bold",
+    width: "45px",
+    height: "45px",
+    borderRadius: "50%",
+    border: `2px solid ${primaryColor}`,
+    color: primaryColor
+  };
+  const buttonColor = {
+    background: primaryColor
+  };
+  const labelColor = {
+    color: primaryColor
+  };
 
   const getStyles = day => {
-    const classes = [];
-
     if (isSameDay(day, selectedDate)) {
-      classes.push('DateDayItem--selected');
+      return selectedStyle;
     }
 
-    if (isBefore(day, currentDate)) {
-      classes.push('DateDayItem--disabled');
-    }
-
-    return classes.join(' ');
+    return null;
   };
 
   const getId = day => {
@@ -47,68 +47,65 @@ export default function DatePicker(props) {
     }
   };
 
-  const getScroll = () => {
-    if (scroll === true) {
-      return 'Datepicker--DateList--scrollable';
-    } else {
-      maxValue = 7;
-      return 'Datepicker--DateList';
-    }
-  };
-
   function renderDays() {
     const dayFormat = "E";
     const dateFormat = "d";
-    const days = [];
-    let startDay = subDays(currentWeek, 3);
+    const months = [];
+    let days = [];
 
-    for (let i = 0; i < maxValue; i++) {
-      days.push(React.createElement("div", {
-        id: `${getId(addDays(startDay, i))}`,
-        className: `Datepicker--DateDayItem ${getStyles(addDays(startDay, i))}`,
-        key: i * i + 2,
-        onClick: () => onDateClick(addDays(startDay, i))
-      }, getDate(addDays(startDay, i)) === 1 ? React.createElement(Waypoint, {
-        horizontal: true,
-        onEnter: () => setSoftSelect(addDays(startDay, i))
-      }) : null, getDate(addDays(startDay, i)) === 20 ? React.createElement(Waypoint, {
-        horizontal: true,
-        onEnter: () => setSoftSelect(addDays(startDay, i))
-      }) : null, isSameDay(addDays(startDay, i), currentDate) ? React.createElement(Waypoint, {
-        horizontal: true,
-        onEnter: () => setSoftSelect(addDays(startDay, i))
-      }) : null, React.createElement("div", {
-        className: "Datepicker--DayLabel",
-        key: i
-      }, format(addDays(startDay, i), dayFormat)), React.createElement("div", {
-        className: "Datepicker--DateLabel",
-        key: i * i + 1
-      }, format(addDays(startDay, i), dateFormat))));
+    for (let i = 0; i <= differenceInMonths(lastDate, startDate); i++) {
+      let start, end;
+      const month = startOfMonth(addMonths(startDate, i));
+      start = i === 0 ? Number(format(startDate, dateFormat)) - 1 : 0;
+      end = i === differenceInMonths(lastDate, startDate) ? Number(format(lastDate, "d")) : Number(format(lastDayOfMonth(month), "d"));
+
+      for (let j = start; j < end; j++) {
+        days.push( /*#__PURE__*/React.createElement("div", {
+          id: `${getId(addDays(startDate, j))}`,
+          className: styles.dateDayItem,
+          style: getStyles(addDays(month, j)),
+          key: addDays(month, j),
+          onClick: () => onDateClick(addDays(month, j))
+        }, /*#__PURE__*/React.createElement("div", {
+          className: styles.dayLabel
+        }, format(addDays(month, j), dayFormat)), /*#__PURE__*/React.createElement("div", {
+          className: styles.dateLabel
+        }, format(addDays(month, j), dateFormat))));
+      }
+
+      months.push( /*#__PURE__*/React.createElement("div", {
+        className: styles.monthContainer,
+        key: month
+      }, /*#__PURE__*/React.createElement("span", {
+        className: styles.monthYearLabel,
+        style: labelColor
+      }, format(month, labelFormat || "MMMM yyyy")), /*#__PURE__*/React.createElement("div", {
+        className: styles.daysContainer,
+        style: i === 0 ? firstSection : null
+      }, days)));
+      days = [];
     }
 
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       id: "container",
-      className: `${getScroll()}`
-    }, days);
+      className: styles.dateListScrollable
+    }, months);
   }
 
   const onDateClick = day => {
-    if (!isBefore(day, currentDate)) {
-      selectDate = null;
-      setSelectedDate(day);
+    setSelectedDate(day);
 
-      if (props.getSelectedDay) {
-        props.getSelectedDay(day);
-      }
+    if (getSelectedDay) {
+      getSelectedDay(day);
     }
   };
 
   useEffect(() => {
-    if (props.getSelectedDay) {
+    if (getSelectedDay) {
       if (selectDate) {
-        props.getSelectedDay(selectDate);
+        getSelectedDay(selectDate);
       } else {
-        props.getSelectedDay(new Date());
+        getSelectedDay(startDate);
       }
     }
   }, []);
@@ -130,32 +127,35 @@ export default function DatePicker(props) {
       }
     }
   }, [selectDate]);
-  let e = document.getElementById('container');
-  let width = e ? e.getBoundingClientRect().width : null;
 
   const nextWeek = () => {
-    scroll ? document.getElementById('container').scrollLeft += width : setCurrentWeek(addWeeks(currentWeek, 1));
+    const e = document.getElementById('container');
+    const width = e ? e.getBoundingClientRect().width : null;
+    e.scrollLeft += width - 60;
   };
 
   const prevWeek = () => {
-    scroll ? document.getElementById('container').scrollLeft -= width : setCurrentWeek(subWeeks(currentWeek, 1));
-  }; // noinspection SpellCheckingInspection
+    const e = document.getElementById('container');
+    const width = e ? e.getBoundingClientRect().width : null;
+    e.scrollLeft -= width - 60;
+  };
 
-
-  const dateFormat = "MMMM yyyy";
-  return React.createElement("div", {
-    className: "Datepicker--Container"
-  }, React.createElement("div", {
-    className: "Datepicker--Strip"
-  }, React.createElement("span", {
-    className: "Datepicker--MonthYearLabel"
-  }, scroll ? format(softSelect, dateFormat) : format(currentWeek, dateFormat)), React.createElement("div", {
-    className: "Datepicker"
-  }, React.createElement("button", {
-    className: "Datepicker--button-prev",
+  return /*#__PURE__*/React.createElement("div", {
+    className: styles.container
+  }, /*#__PURE__*/React.createElement("div", {
+    className: styles.buttonWrapper
+  }, /*#__PURE__*/React.createElement("button", {
+    className: styles.button,
+    style: buttonColor,
     onClick: prevWeek
-  }, "\u2190"), renderDays(), React.createElement("button", {
-    className: "Datepicker--button-next",
+  }, "\u2190")), renderDays(), /*#__PURE__*/React.createElement("div", {
+    className: styles.buttonWrapper
+  }, /*#__PURE__*/React.createElement("button", {
+    className: styles.button,
+    style: buttonColor,
     onClick: nextWeek
-  }, "\u2192"))));
+  }, "\u2192")));
 }
+/*more pictures
+* example code sandbox
+* update readme*/

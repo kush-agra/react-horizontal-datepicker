@@ -2,6 +2,8 @@
 ###### V2 with new logic and completely removing dependancy on react-waypoint as well as leaner code which now uses css-modules
 
 A simple and lightweight easily style-able Side scrolling datepicker, built with ❤️
+Bundle size of 469 Bytes Minified + Gzipped
+
 |                                     |                                     |
 :------------------------------------ |:------------------------------------:
  ![](https://i.imgur.com/2vawdez.jpg) | ![](https://i.imgur.com/3IYCCPJ.jpg) 
