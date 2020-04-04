@@ -122,7 +122,8 @@ export default function DatePicker(props) {
           if (view) {
             view.scrollIntoView({
               behavior: "smooth",
-              inline: "center"
+              inline: "center",
+              block: "nearest"
             });
           }
         }, 20);
@@ -142,7 +143,9 @@ export default function DatePicker(props) {
 
 
   const dateFormat = "MMMM yyyy";
-  return React.createElement("div", null, React.createElement("div", {
+  return React.createElement("div", {
+    className: "Datepicker--Container"
+  }, React.createElement("div", {
     className: "Datepicker--Strip"
   }, React.createElement("span", {
     className: "Datepicker--MonthYearLabel"

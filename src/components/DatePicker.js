@@ -1,35 +1,33 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from "react";
-import {Waypoint} from 'react-waypoint';
-import "./datepicker.css"
-import {addDays, addWeeks, format, getDate, isBefore, isSameDay, subDays, subWeeks} from "date-fns";
+import styles from "./DatePicker.module.css"
+import {
+    addDays,
+    addMonths,
+    differenceInMonths,
+    format,
+    isSameDay,
+    lastDayOfMonth,
+    startOfMonth
+} from "date-fns";
 
-export default function DatePicker(props) {
+export default function DatePicker({endDate, selectDate, getSelectedDay, color, labelFormat}) {
     const [selectedDate, setSelectedDate] = useState(new Date());
-    const [softSelect, setSoftSelect] = useState(new Date());
-    const [currentWeek, setCurrentWeek] = useState(new Date());
-    const [currentDate] = useState(new Date());
-    const {endDate, shouldScroll} = props;
-    let {selectDate} = props;
-    let scroll = false;
-    shouldScroll === true? scroll = true : scroll = false;
-    let maxValue;
-    if (scroll===false){
-        maxValue = 7;
-    }
-    else{
-        maxValue = endDate | 90;
-    }
+    const firstSection = {marginLeft: '40px'};
+    const startDate = new Date();
+    const lastDate = addDays(startDate, endDate || 90);
+    const primaryColor = color || 'rgb(54, 105, 238)';
+    const selectedStyle = {fontWeight:"bold",width:"45px",height:"45px",borderRadius:"50%",border:`2px solid ${primaryColor}`,color:primaryColor};
+    const buttonColor = {background: primaryColor};
+    const labelColor= {color: primaryColor};
+
     const getStyles = (day) => {
-        const classes = [];
         if (isSameDay(day, selectedDate)) {
-            classes.push('DateDayItem--selected')
+            return(selectedStyle);
         }
-        if (isBefore(day, currentDate)) {
-            classes.push('DateDayItem--disabled')
-        }
-        return classes.join(' ')
+        return null
     };
+
     const getId = (day) => {
         if (isSameDay(day, selectedDate)) {
             return ('selected')
@@ -37,61 +35,62 @@ export default function DatePicker(props) {
             return ("")
         }
     };
-    const getScroll = () => {
-        if (scroll === true) {
-            return ('Datepicker--DateList--scrollable');
-        } else {
-            maxValue = 7;
-            return ('Datepicker--DateList');
-        }
-    };
 
     function renderDays() {
         const dayFormat = "E";
         const dateFormat = "d";
-        const days = [];
-        let startDay = subDays(currentWeek,3);
-        for (let i = 0; i < maxValue; i++) {
-            days.push(
-                <div id={`${getId(addDays(startDay, i))}`}
-                     className={`Datepicker--DateDayItem ${getStyles(addDays(startDay, i))}`}
-                     key={i * i + 2}
-                     onClick={() => onDateClick(addDays(startDay, i))}
-                >
-                    {getDate(addDays(startDay, i)) === 1 ?
-                        <Waypoint horizontal={true} onEnter={() => (setSoftSelect(addDays(startDay, i)))}/> : null}
-                    {getDate(addDays(startDay, i)) === 20 ?
-                        <Waypoint horizontal={true} onEnter={() => (setSoftSelect(addDays(startDay, i)))}/> : null}
-                    {isSameDay(addDays(startDay, i), currentDate) ?
-                        <Waypoint horizontal={true} onEnter={() => (setSoftSelect(addDays(startDay, i)))}/> : null}
-                    <div className={"Datepicker--DayLabel"} key={i}>
-                        {format(addDays(startDay, i), dayFormat)}
+        const months = [];
+        let days = [];
+        for (let i = 0; i <= differenceInMonths(lastDate, startDate); i++) {
+            let start, end;
+            const month = startOfMonth(addMonths(startDate, i));
+            start = i === 0 ? Number(format(startDate, dateFormat)) - 1 : 0;
+            end = i === differenceInMonths(lastDate, startDate) ? Number(format(lastDate, "d")) : Number(format(lastDayOfMonth(month), "d"));
+            for (let j = start; j < end; j++) {
+                days.push(
+                    <div id={`${getId(addDays(startDate, j))}`}
+                         className={styles.dateDayItem}
+                         style={getStyles(addDays(month, j))}
+                         key={addDays(month, j)}
+                         onClick={() => onDateClick(addDays(month, j))}
+                    >
+                        <div className={styles.dayLabel}>
+                            {format(addDays(month, j), dayFormat)}
+                        </div>
+                        <div className={styles.dateLabel}>
+                            {format(addDays(month, j), dateFormat)}
+                        </div>
                     </div>
-                    <div className={"Datepicker--DateLabel"} key={i * i + 1}>
-                        {format(addDays(startDay, i), dateFormat)}
+                );
+            }
+            months.push(
+                <div className={styles.monthContainer} key={month}>
+                    <span className={styles.monthYearLabel} style={labelColor}>
+                        {format(month, labelFormat || "MMMM yyyy")}
+                    </span>
+                    <div className={styles.daysContainer} style={i===0?firstSection:null}>
+                        {days}
                     </div>
                 </div>
             );
+            days = [];
         }
-        return <div id={"container"} className={`${getScroll()}`}>{days}</div>;
+        return <div id={"container"} className={styles.dateListScrollable}>{months}</div>;
     }
 
     const onDateClick = day => {
-        if (!isBefore(day, currentDate)) {
-            selectDate = null;
-            setSelectedDate(day);
-            if (props.getSelectedDay) {
-                props.getSelectedDay(day);
-            }
+        setSelectedDate(day);
+        if (getSelectedDay) {
+            getSelectedDay(day);
         }
     };
 
     useEffect(() => {
-        if (props.getSelectedDay) {
+        if (getSelectedDay) {
             if (selectDate) {
-                props.getSelectedDay(selectDate);
+                getSelectedDay(selectDate);
             } else {
-                props.getSelectedDay(new Date());
+                getSelectedDay(startDate);
             }
         }
     }, []);
@@ -110,33 +109,31 @@ export default function DatePicker(props) {
         }
     }, [selectDate]);
 
-
-    let e = document.getElementById('container');
-    let width = e ? e.getBoundingClientRect().width : null;
-
     const nextWeek = () => {
-        scroll ? document.getElementById('container').scrollLeft += width : setCurrentWeek(addWeeks(currentWeek, 1))
+        const e = document.getElementById('container');
+        const width = e ? e.getBoundingClientRect().width : null;
+        e.scrollLeft += width - 60;
     };
 
     const prevWeek = () => {
-        scroll ? document.getElementById('container').scrollLeft -= width : setCurrentWeek(subWeeks(currentWeek, 1))
+        const e = document.getElementById('container');
+        const width = e ? e.getBoundingClientRect().width : null;
+        e.scrollLeft -= width - 60;
     };
 
-    // noinspection SpellCheckingInspection
-    const dateFormat = "MMMM yyyy";
     return (
-        <div className={"Datepicker--Container"}>
-            <div className={"Datepicker--Strip"}>
-             <span className={"Datepicker--MonthYearLabel"}>
-                 {scroll ? format(softSelect, dateFormat) : format(currentWeek, dateFormat)}
-                 {/*{!scroll? isSameMonth(softSelect,currentWeek)? null: " / " + format(softSelect, dateFormat) : null}*/}
-             </span>
-                <div className={"Datepicker"}>
-                    <button className={"Datepicker--button-prev"} onClick={prevWeek}>←</button>
-                    {renderDays()}
-                    <button className={"Datepicker--button-next"} onClick={nextWeek}>→</button>
-                </div>
+        <div className={styles.container}>
+            <div className={styles.buttonWrapper}>
+                <button className={styles.button} style={buttonColor} onClick={prevWeek}>←</button>
+            </div>
+            {renderDays()}
+            <div className={styles.buttonWrapper}>
+                <button className={styles.button} style={buttonColor} onClick={nextWeek}>→</button>
             </div>
         </div>
     )
 }
+
+/*more pictures
+* example code sandbox
+* update readme*/
