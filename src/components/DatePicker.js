@@ -4,21 +4,24 @@ import "./datepicker.css"
 import {
     addDays,
     addMonths,
-    differenceInDays,
     differenceInMonths,
     format,
     isBefore,
     isSameDay,
-    lastDayOfMonth
+    lastDayOfMonth,
+    startOfMonth
 } from "date-fns";
 
 export default function DatePicker(props) {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const {endDate, selectDate} = props;
     let maxValue = endDate || 90;
+    const startDate = new Date();
+    const lastDate = addDays(new Date(), maxValue);
+    console.log(selectedDate);
 
     const getStyles = (day) => {
-        console.log(day);
+        // console.log(day);
         const classes = [];
         if (isSameDay(day, selectedDate)) {
             classes.push('DateDayItem--selected');
@@ -42,19 +45,17 @@ export default function DatePicker(props) {
         const dateFormat = "d";
         const months = [];
         let days = [];
-        let startDate = new Date();
-        let lastDate = addDays(new Date(), maxValue);
-        console.log(lastDayOfMonth(new Date(2020, 3, 1, 0, 1)));
-        console.log(Number(format(differenceInDays(lastDayOfMonth(new Date(2020, 3, 1, 0, 1)), new Date()), dateFormat)));
+        // console.log(lastDayOfMonth(new Date(2020, 3, 1, 0, 1)));
+        // console.log(Number(format(differenceInDays(lastDayOfMonth(new Date(2020, 3, 1, 0, 1)), new Date()), dateFormat)));
 
         for (let i = 0; i <= differenceInMonths(lastDate, startDate); i++) {
             let start, end;
-            let month = addMonths(new Date(), i);
+            const month = startOfMonth(addMonths(new Date(), i));
             start = i === 0 ? Number(format(startDate, dateFormat)) - 1 : 0;
-            console.dir({startDate, start, ss: "s"});
             end = i === differenceInMonths(lastDate, startDate) ? Number(format(lastDate, "d")) : Number(format(lastDayOfMonth(month), "d"));
+            console.dir({start, i, month, end});
             for (let j = start; j < end; j++) {
-                console.log(month, j);
+                // console.log(month, j);
                 days.push(
                     <div id={`${getId(addDays(startDate, j))}`}
                          className={`Datepicker--DateDayItem ${getStyles(addDays(month, j))}`}
@@ -65,12 +66,22 @@ export default function DatePicker(props) {
                             {format(addDays(month, j), dayFormat)}
                         </div>
                         <div className={"Datepicker--DateLabel"}>
-                            {j + 1}
+                            {format(addDays(month, j), dateFormat)}
+                            {/*{j + 1}*/}
                         </div>
                     </div>
                 );
             }
-            months.push(<div className={"monthContainer"}>{days}</div>);
+            months.push(
+                <div className={"monthContainer"}>
+                    <span className={"month"}>
+                        {format(month, "MMMM yyyy")}
+                    </span>
+                    <div className={"daysContainer"}>
+                        {days}
+                    </div>
+                </div>
+            );
             days = [];
         }
 
@@ -93,7 +104,7 @@ export default function DatePicker(props) {
         //         </>
         //     );
         // }
-        console.log(months);
+        // console.log(months);
         return <div id={"container"} className={"Datepicker--DateList--scrollable"}>{months}</div>;
     }
 
@@ -128,13 +139,17 @@ export default function DatePicker(props) {
         }
     }, [selectDate]);
 
+    const nextWeek = () => {
+        const e = document.getElementById('container');
+        const width = e ? e.getBoundingClientRect().width : null;
+        e.scrollLeft += width;
+    };
 
-    let e = document.getElementById('container');
-    let width = e ? e.getBoundingClientRect().width : null;
-
-    const nextWeek = () => document.getElementById('container').scrollLeft += width;
-
-    const prevWeek = () => document.getElementById('container').scrollLeft -= width;
+    const prevWeek = () => {
+        const e = document.getElementById('container');
+        const width = e ? e.getBoundingClientRect().width : null;
+        e.scrollLeft -= width;
+    };
 
     // const dateFormat = "MMMM yyyy";
     return (
