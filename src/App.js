@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-        <DatePicker getSelectedDay={selectedDay}/>
+        <DatePicker getSelectedDay={selectedDay} labelFormat={"MMMM"} color={"#374e8c"}/>
     </div>
   );
 }

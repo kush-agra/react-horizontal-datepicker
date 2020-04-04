@@ -1,35 +1,30 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from "react";
-import "./datepicker.css"
 import styles from "./DatePicker.module.css"
 import {
     addDays,
     addMonths,
     differenceInMonths,
     format,
-    isBefore,
     isSameDay,
     lastDayOfMonth,
     startOfMonth
 } from "date-fns";
 
-export default function DatePicker(props) {
+export default function DatePicker({endDate, selectDate, getSelectedDay, color, labelFormat}) {
     const [selectedDate, setSelectedDate] = useState(new Date());
-    const {endDate, selectDate} = props;
     const firstSection = {marginLeft: '40px'};
     const startDate = new Date();
-    const lastDate = addDays(new Date(), endDate || 90);
-    const primaryColor = 'rgb(54, 105, 238)';
+    const lastDate = addDays(startDate, endDate || 90);
+    const primaryColor = color || 'rgb(54, 105, 238)';
     const selectedStyle = {fontWeight:"bold",width:"45px",height:"45px",borderRadius:"50%",border:`2px solid ${primaryColor}`,color:primaryColor};
     const buttonColor = {background: primaryColor};
+    const labelColor= {color: primaryColor};
 
     const getStyles = (day) => {
         if (isSameDay(day, selectedDate)) {
             return(selectedStyle);
         }
-        // if (!isSameDay(day, new Date()) && isBefore(day, new Date())) {
-        //     return('DateDayItem--disabled')
-        // }
         return null
     };
 
@@ -48,55 +43,54 @@ export default function DatePicker(props) {
         let days = [];
         for (let i = 0; i <= differenceInMonths(lastDate, startDate); i++) {
             let start, end;
-            const month = startOfMonth(addMonths(new Date(), i));
+            const month = startOfMonth(addMonths(startDate, i));
             start = i === 0 ? Number(format(startDate, dateFormat)) - 1 : 0;
             end = i === differenceInMonths(lastDate, startDate) ? Number(format(lastDate, "d")) : Number(format(lastDayOfMonth(month), "d"));
             for (let j = start; j < end; j++) {
                 days.push(
                     <div id={`${getId(addDays(startDate, j))}`}
-                         className={`Datepicker--DateDayItem`}
+                         className={styles.dateDayItem}
                          style={getStyles(addDays(month, j))}
                          key={addDays(month, j)}
                          onClick={() => onDateClick(addDays(month, j))}
                     >
-                        <div className={"Datepicker--DayLabel"}>
+                        <div className={styles.dayLabel}>
                             {format(addDays(month, j), dayFormat)}
                         </div>
-                        <div className={"Datepicker--DateLabel"}>
+                        <div className={styles.dateLabel}>
                             {format(addDays(month, j), dateFormat)}
-                            {/*{j + 1}*/}
                         </div>
                     </div>
                 );
             }
             months.push(
-                <div className={"monthContainer"} key={month}>
-                    <span className={"Datepicker--MonthYearLabel"}>
-                        {format(month, "MMMM yyyy")}
+                <div className={styles.monthContainer} key={month}>
+                    <span className={styles.monthYearLabel} style={labelColor}>
+                        {format(month, labelFormat || "MMMM yyyy")}
                     </span>
-                    <div className={"daysContainer"} style={i===0?firstSection:null}>
+                    <div className={styles.daysContainer} style={i===0?firstSection:null}>
                         {days}
                     </div>
                 </div>
             );
             days = [];
         }
-        return <div id={"container"} className={"Datepicker--DateList--scrollable"}>{months}</div>;
+        return <div id={"container"} className={styles.dateListScrollable}>{months}</div>;
     }
 
     const onDateClick = day => {
         setSelectedDate(day);
-        if (props.getSelectedDay) {
-            props.getSelectedDay(day);
+        if (getSelectedDay) {
+            getSelectedDay(day);
         }
     };
 
     useEffect(() => {
-        if (props.getSelectedDay) {
+        if (getSelectedDay) {
             if (selectDate) {
-                props.getSelectedDay(selectDate);
+                getSelectedDay(selectDate);
             } else {
-                props.getSelectedDay(new Date());
+                getSelectedDay(startDate);
             }
         }
     }, []);
@@ -118,38 +112,28 @@ export default function DatePicker(props) {
     const nextWeek = () => {
         const e = document.getElementById('container');
         const width = e ? e.getBoundingClientRect().width : null;
-        e.scrollLeft += width;
+        e.scrollLeft += width - 60;
     };
 
     const prevWeek = () => {
         const e = document.getElementById('container');
         const width = e ? e.getBoundingClientRect().width : null;
-        e.scrollLeft -= width;
+        e.scrollLeft -= width - 60;
     };
 
-    // const dateFormat = "MMMM yyyy";
     return (
-        <div className={"Datepicker--Container"}>
-            <div className={"Datepicker--Strip"}>
-                <div className={"Datepicker"}>
-                    <div className={"Datepicker--buttonWrapper"}>
-                        <button className={styles.button} style={buttonColor} onClick={prevWeek}>←</button>
-                    </div>
-                    {renderDays()}
-                    <div className={"Datepicker--buttonWrapper"}>
-                        <button className={styles.button} style={buttonColor} onClick={nextWeek}>→</button>
-                    </div>
-                </div>
+        <div className={styles.container}>
+            <div className={styles.buttonWrapper}>
+                <button className={styles.button} style={buttonColor} onClick={prevWeek}>←</button>
+            </div>
+            {renderDays()}
+            <div className={styles.buttonWrapper}>
+                <button className={styles.button} style={buttonColor} onClick={nextWeek}>→</button>
             </div>
         </div>
     )
 }
 
-/*main loop by calculation number of months till we have to go
-* secondary loop for every month and check and first time start from current date 1st of month
-* add a sticky month
-* more pictures
+/*more pictures
 * example code sandbox
-* update readme
-* v2 hype
-* styles module*/
+* update readme*/

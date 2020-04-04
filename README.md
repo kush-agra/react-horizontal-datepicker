@@ -1,10 +1,18 @@
 ## react-horizontal-datepicker
-A fully style-able horizontal date picker with the option to scroll for web
-![Example](https://i.imgur.com/oe3WEGF.jpg)
+###### V2 with new logic and completely removing dependancy on react-waypoint as well as leaner code which now uses css-modules
+
+A simple and lightweight easily style-able Side scrolling datepicker, built with ❤️
+|                                     |                                     |
+:------------------------------------ |:------------------------------------:
+ ![](https://i.imgur.com/2vawdez.jpg) | ![](https://i.imgur.com/3IYCCPJ.jpg) 
+ ![](https://i.imgur.com/0aixw6v.jpg) | ![](https://i.imgur.com/M467k3A.jpg) 
+ 
 
 ### Installation
 
 Run `yarn add react-horizontal-datepicker`
+or
+Run `npm i react-horizontal-datepicker`
 
 ### Usage
 
@@ -12,24 +20,25 @@ Import:
 
 `import DatePicker from "react-horizontal-datepicker";`
 
-and use as:
+and simply use the component as:
 
 ```javascript
-<DatePicker/>
+<DatePicker />
 ```
 
-Available Props are
+example at the end
+
+#### Available Props are
 
 | Prop          | Type    | Default  | Description |
 | ------------- |:-------:| :-------:| ----------- |
-| shouldScroll  | Boolean | false    | Set List to be scrollable |
-| getSelectedDay| Function|          | Function to get the selected Day |
-| endDate       | Number  |   90     | Number of days to render from current date   |
-| selectDate    | Date    |          | prop to send selected date manually or from another calendar component |
+| getSelectedDay  | Function |     | Function to get the selected Day |
+| endDate         | Number|      90    | Number of days to render from current date |
+| selectDate       | Date  |        | prop to send selected date manually or from another calendar component |
+| color    | String    |    'rgb(54, 105, 238)'      | Set the primary color can be any color format in string |
+| labelFormat | String | 'MMMM yyyy' | Month label format - uses [date-fns format](https://date-fns.org/v1.30.1/docs/format) types |
 
-endDate currently has no effect on non scrolling list
-
-Example:
+### Example:
 
 ```javascript
 function App() {
@@ -40,14 +49,15 @@ function App() {
 
   return (
       <DatePicker getSelectedDay={selectedDay}
-                  shouldScroll={true}
                   endDate={100}
-                  selectDate={new Date("2020-01-30")}              
+                  selectDate={new Date("2020-04-30")}
+                  labelFormat={"MMMM"}
+                  color={"#374e8c"}          
 />
   );
 }
 ```
 
 ### Todo
-Add selectors for starting date and disabled dates
+maybe use react window for efficiency
 

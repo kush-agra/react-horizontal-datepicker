@@ -25,16 +25,15 @@
     ]
   },
   "dependencies": {
-    "date-fns": "^2.8.1",
-    "react-waypoint": "^9.0.2"
+    "date-fns": "^2.11.1"
   },
   "peerDependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0"
+    "react-scripts": "^3.3.0"
   },
   "scripts": {
-    "publish:npm": "rm -rf dist && mkdir dist &&  babel src/components -d dist --copy-files",
+    "publish:npm": "rm -rf dist && mkdir dist && babel src/components -d dist --copy-files",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -56,11 +55,11 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.7",
-    "@babel/preset-react": "^7.7.4",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0"
+    "@babel/cli": "^7.8.4",
+    "@babel/preset-react": "^7.9.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1"
   },
   "bit": {
     "env": {
