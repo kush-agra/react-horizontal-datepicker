@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="981c5613-c317-4d6d-aa33-5280dd2b9d1d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/DatePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/DatePicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DatePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DatePicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/datepicker.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/datepicker.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +96,11 @@
       <workItem from="1579503278657" duration="699000" />
       <workItem from="1579596697318" duration="36000" />
       <workItem from="1580184056059" duration="620000" />
+      <workItem from="1583436780270" duration="242000" />
+      <workItem from="1583923296217" duration="2462000" />
+      <workItem from="1584971316718" duration="513000" />
+      <workItem from="1585212703064" duration="312000" />
+      <workItem from="1586013242719" duration="8000" />
     </task>
     <task id="LOCAL-00001" summary="Initial working commit with selection and disabled states styling">
       <created>1577970627028</created>
@@ -326,5 +326,9 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="525" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1578065222662" />
+    <state x="468" y="170" key="git4idea.branch.GitSmartOperationDialog" timestamp="1586013274724">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="468" y="170" key="git4idea.branch.GitSmartOperationDialog/0.0.1440.900@0.0.1440.900" timestamp="1586013274724" />
   </component>
 </project>
