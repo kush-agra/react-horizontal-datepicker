@@ -133,7 +133,3 @@ export default function DatePicker({endDate, selectDate, getSelectedDay, color, 
         </div>
     )
 }
-
-/*more pictures
-* example code sandbox
-* update readme*/

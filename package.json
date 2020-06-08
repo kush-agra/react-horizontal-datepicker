@@ -1,6 +1,6 @@
 {
   "name": "react-horizontal-datepicker",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "homepage": "https://github.com/kush-agra/react-horizontal-datepicker",
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
     ]
   },
   "dependencies": {
-    "date-fns": "^2.11.1"
+    "date-fns": "^2.14.0"
   },
   "peerDependencies": {
     "react": "^16.12.0",
@@ -55,8 +55,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/preset-react": "^7.9.4",
+    "@babel/cli": "^7.10.1",
+    "@babel/preset-react": "^7.10.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1"
