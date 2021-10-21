@@ -7,13 +7,15 @@ import { DateView } from "./DateView";
 import { MonthView } from './MonthView';
 
 const DatePicker = (props) => {
-    const next = () => {
+    const next = (event) => {
+        event.preventDefault();
         const e = document.getElementById('container');
         const width = e ? e.getBoundingClientRect().width : null;
         e.scrollLeft += width - 60;
     };
 
-    const prev = () => {
+    const prev = (event) => {
+        event.preventDefault();
         const e = document.getElementById('container');
         const width = e ? e.getBoundingClientRect().width : null;
         e.scrollLeft -= width - 60;
