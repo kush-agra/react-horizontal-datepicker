@@ -36,6 +36,7 @@ example at the end
 | selectDate       | Date  |        | prop to send selected date manually or from another calendar component |
 | color    | String    |    'rgb(54, 105, 238)'      | Set the primary color can be any color format in string |
 | labelFormat | String | 'MMMM yyyy' | Month label format - uses [date-fns format](https://date-fns.org/v1.30.1/docs/format) types |
+| marked  | Object |     | Marking targeted date with text below (Optional) |
 
 ### Example:
 
@@ -59,6 +60,45 @@ function App() {
 }
 ```
 
-### Todo
-use react window for efficiency
+### Using marked dates
 
+Example:
+
+```javascript
+function App() {
+
+    const selectedDay = (val) =>{
+        console.log(val)
+    };
+
+  return (
+      <DatePicker getSelectedDay={selectedDay}
+                  endDate={100}
+                  selectDate={new Date("2020-04-30")}
+                  labelFormat={"MMMM"}
+                  color={"#374e8c"}
+                  marked={[
+                      {
+                          date: new Date(2021, 9, 3),
+                          marked: true,
+                          style: {
+                              color: "#ff0000",
+                              padding: "2px",
+                              fontSize: 12,
+                          },
+                          text: "1x",
+                      },
+                      {
+                          date: new Date(2021, 9, 4),
+                          marked: true,
+                          text: "5x"
+                      },
+                  ]}
+/>
+  );
+}
+```
+
+
+### Todo
+use react window for efficienc

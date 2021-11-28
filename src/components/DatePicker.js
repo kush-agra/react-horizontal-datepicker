@@ -29,7 +29,8 @@ const DatePicker = (props) => {
     let buttonzIndex = {zIndex: 2};
     let buttonStyle = {background: primaryColor};
     let Component = DateView;
-    if(props.type === "month"){
+
+    if (props.type === "month") {
         buttonzIndex = {zIndex: 5};
         Component = MonthView;
         buttonStyle = {background: primaryColor, marginBottom: "5px"};
