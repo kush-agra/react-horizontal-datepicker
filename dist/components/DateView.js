@@ -2,20 +2,19 @@
 import React, { useEffect, useState } from "react";
 import styles from "./DatePicker.module.css";
 import { addDays, addMonths, differenceInMonths, format, isSameDay, lastDayOfMonth, startOfMonth } from "date-fns";
-export default function DatePicker({
-  endDate,
+
+const DateView = ({
+  startDate,
+  lastDate,
   selectDate,
   getSelectedDay,
-  color,
+  primaryColor,
   labelFormat
-}) {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+}) => {
+  const [selectedDate, setSelectedDate] = useState(null);
   const firstSection = {
     marginLeft: '40px'
   };
-  const startDate = new Date();
-  const lastDate = addDays(startDate, endDate || 90);
-  const primaryColor = color || 'rgb(54, 105, 238)';
   const selectedStyle = {
     fontWeight: "bold",
     width: "45px",
@@ -24,30 +23,19 @@ export default function DatePicker({
     border: `2px solid ${primaryColor}`,
     color: primaryColor
   };
-  const buttonColor = {
-    background: primaryColor
-  };
   const labelColor = {
     color: primaryColor
   };
 
   const getStyles = day => {
-    if (isSameDay(day, selectedDate)) {
-      return selectedStyle;
-    }
-
-    return null;
+    return isSameDay(day, selectedDate) ? selectedStyle : null;
   };
 
   const getId = day => {
-    if (isSameDay(day, selectedDate)) {
-      return 'selected';
-    } else {
-      return "";
-    }
+    return isSameDay(day, selectedDate) ? 'selected' : "";
   };
 
-  function renderDays() {
+  const renderDays = () => {
     const dayFormat = "E";
     const dateFormat = "d";
     const months = [];
@@ -60,17 +48,18 @@ export default function DatePicker({
       end = i === differenceInMonths(lastDate, startDate) ? Number(format(lastDate, "d")) : Number(format(lastDayOfMonth(month), "d"));
 
       for (let j = start; j < end; j++) {
+        let currentDay = addDays(month, j);
         days.push( /*#__PURE__*/React.createElement("div", {
-          id: `${getId(addDays(startDate, j))}`,
+          id: `${getId(currentDay)}`,
           className: styles.dateDayItem,
-          style: getStyles(addDays(month, j)),
-          key: addDays(month, j),
-          onClick: () => onDateClick(addDays(month, j))
+          style: getStyles(currentDay),
+          key: currentDay,
+          onClick: () => onDateClick(currentDay)
         }, /*#__PURE__*/React.createElement("div", {
           className: styles.dayLabel
-        }, format(addDays(month, j), dayFormat)), /*#__PURE__*/React.createElement("div", {
+        }, format(currentDay, dayFormat)), /*#__PURE__*/React.createElement("div", {
           className: styles.dateLabel
-        }, format(addDays(month, j), dateFormat))));
+        }, format(currentDay, dateFormat))));
       }
 
       months.push( /*#__PURE__*/React.createElement("div", {
@@ -90,7 +79,7 @@ export default function DatePicker({
       id: "container",
       className: styles.dateListScrollable
     }, months);
-  }
+  };
 
   const onDateClick = day => {
     setSelectedDate(day);
@@ -127,35 +116,7 @@ export default function DatePicker({
       }
     }
   }, [selectDate]);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, renderDays());
+};
 
-  const nextWeek = () => {
-    const e = document.getElementById('container');
-    const width = e ? e.getBoundingClientRect().width : null;
-    e.scrollLeft += width - 60;
-  };
-
-  const prevWeek = () => {
-    const e = document.getElementById('container');
-    const width = e ? e.getBoundingClientRect().width : null;
-    e.scrollLeft -= width - 60;
-  };
-
-  return /*#__PURE__*/React.createElement("div", {
-    className: styles.container
-  }, /*#__PURE__*/React.createElement("div", {
-    className: styles.buttonWrapper
-  }, /*#__PURE__*/React.createElement("button", {
-    className: styles.button,
-    style: buttonColor,
-    onClick: prevWeek
-  }, "\u2190")), renderDays(), /*#__PURE__*/React.createElement("div", {
-    className: styles.buttonWrapper
-  }, /*#__PURE__*/React.createElement("button", {
-    className: styles.button,
-    style: buttonColor,
-    onClick: nextWeek
-  }, "\u2192")));
-}
-/*more pictures
-* example code sandbox
-* update readme*/
+export { DateView };

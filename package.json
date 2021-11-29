@@ -16,7 +16,7 @@
     "web"
   ],
   "private": false,
-  "main": "./dist/DatePicker.js",
+  "main": "./dist/components/DatePicker.js",
   "license": "MIT",
   "author": "Kushagra Agrawal",
   "babel": {
@@ -30,10 +30,10 @@
   "peerDependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "^3.3.0"
+    "react-scripts": "^4.0.3"
   },
   "scripts": {
-    "publish:npm": "rm -rf dist && mkdir dist && babel src/components -d dist --copy-files",
+    "publish:npm": "rm -rf dist && mkdir dist && mkdir dist/components && mkdir dist/global && babel src/components -d dist/components --copy-files && babel src/global -d dist/global --copy-files",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
