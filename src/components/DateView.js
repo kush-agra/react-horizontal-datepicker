@@ -30,11 +30,11 @@ const DateView = ({startDate, lastDate, selectDate, getSelectedDay, primaryColor
     const getMarked = (day) => {
         let markedRes = marked.find(i => isSameDay(i.date, day));
         if (markedRes) {
-            if (!markedRes?.marked) {
+            if (!markedRes.marked) {
                 return;
             }
 
-            return <div style={{ ...markedRes?.style ?? markedStyle }} className={styles.markedLabel}>
+            return <div style={{ ...markedRes.style ?? markedStyle }} className={styles.markedLabel}>
                 {markedRes.text}
             </div>;
         }
