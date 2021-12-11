@@ -63,7 +63,7 @@ const DateView = ({
     const dayFormat = "E";
     const dateFormat = "d";
     const months = [];
-    let days = []; // const styleItemMarked = marked ? styles.dateDayItemMarked : styles.dateDayItem;
+    let days = [];
 
     for (let i = 0; i <= differenceInMonths(lastDate, startDate); i++) {
       let start, end;
