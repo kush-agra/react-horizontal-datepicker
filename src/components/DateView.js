@@ -49,8 +49,6 @@ const DateView = ({startDate, lastDate, selectDate, getSelectedDay, primaryColor
         const months = [];
         let days = [];
 
-        // const styleItemMarked = marked ? styles.dateDayItemMarked : styles.dateDayItem;
-
         for (let i = 0; i <= differenceInMonths(lastDate, startDate); i++) {
             let start, end;
             const month = startOfMonth(addMonths(startDate, i));
