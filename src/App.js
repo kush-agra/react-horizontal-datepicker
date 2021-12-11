@@ -13,11 +13,29 @@ function App() {
     <div className="App">
         <DatePicker startDate={startDate} 
                     days={366 * 25}
-                    type="month"
-                    selectDate={new Date(2021, 9, 1)}
+                    type="day"
+                    selectDate={new Date(2021, 9, 5)}
                     getSelectedDay={selectedDay} 
                     labelFormat={"MMMM yyyy"} 
-                    color={"#374e8c"}/>
+                    color={"#374e8c"}
+                    marked={[
+                        {
+                            date: new Date(2021, 9, 3),
+                            marked: true,
+                            style: {
+                                color: "#ff0000",
+                                padding: "2px",
+                                fontSize: 12,
+                            },
+                            text: "1x",
+                        },
+                        {
+                            date: new Date(2021, 9, 4),
+                            marked: true,
+                            text: "5x"
+                        },
+                    ]}
+        />
     </div>
   );
 }

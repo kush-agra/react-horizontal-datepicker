@@ -9,7 +9,8 @@ const DateView = ({
   selectDate,
   getSelectedDay,
   primaryColor,
-  labelFormat
+  labelFormat,
+  marked
 }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const firstSection = {
@@ -26,6 +27,11 @@ const DateView = ({
   const labelColor = {
     color: primaryColor
   };
+  const markedStyle = {
+    color: "#8c3737",
+    padding: "2px",
+    fontSize: 12
+  };
 
   const getStyles = day => {
     return isSameDay(day, selectedDate) ? selectedStyle : null;
@@ -35,11 +41,29 @@ const DateView = ({
     return isSameDay(day, selectedDate) ? 'selected' : "";
   };
 
+  const getMarked = day => {
+    let markedRes = marked.find(i => isSameDay(i.date, day));
+
+    if (markedRes) {
+      if (!markedRes?.marked) {
+        return;
+      }
+
+      return /*#__PURE__*/React.createElement("div", {
+        style: { ...(markedRes?.style ?? markedStyle)
+        },
+        className: styles.markedLabel
+      }, markedRes.text);
+    }
+
+    return "";
+  };
+
   const renderDays = () => {
     const dayFormat = "E";
     const dateFormat = "d";
     const months = [];
-    let days = [];
+    let days = []; // const styleItemMarked = marked ? styles.dateDayItemMarked : styles.dateDayItem;
 
     for (let i = 0; i <= differenceInMonths(lastDate, startDate); i++) {
       let start, end;
@@ -51,7 +75,7 @@ const DateView = ({
         let currentDay = addDays(month, j);
         days.push( /*#__PURE__*/React.createElement("div", {
           id: `${getId(currentDay)}`,
-          className: styles.dateDayItem,
+          className: marked ? styles.dateDayItemMarked : styles.dateDayItem,
           style: getStyles(currentDay),
           key: currentDay,
           onClick: () => onDateClick(currentDay)
@@ -59,7 +83,7 @@ const DateView = ({
           className: styles.dayLabel
         }, format(currentDay, dayFormat)), /*#__PURE__*/React.createElement("div", {
           className: styles.dateLabel
-        }, format(currentDay, dateFormat))));
+        }, format(currentDay, dateFormat)), getMarked(currentDay)));
       }
 
       months.push( /*#__PURE__*/React.createElement("div", {
