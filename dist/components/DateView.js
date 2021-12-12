@@ -45,13 +45,18 @@ const DateView = ({
     let markedRes = marked.find(i => isSameDay(i.date, day));
 
     if (markedRes) {
+      let resMarked = markedStyle;
+
+      if (markedRes.style) {
+        resMarked = markedRes.style;
+      }
+
       if (!markedRes.marked) {
         return;
       }
 
       return /*#__PURE__*/React.createElement("div", {
-        style: { ...(markedRes.style ?? markedStyle)
-        },
+        style: resMarked,
         className: styles.markedLabel
       }, markedRes.text);
     }
