@@ -24,14 +24,19 @@ function App() {
                             marked: true,
                             style: {
                                 color: "#ff0000",
+                                fontSize: "14px",
                                 padding: "2px",
-                                fontSize: 12,
                             },
                             text: "1x",
                         },
                         {
                             date: new Date(2021, 9, 4),
                             marked: true,
+                            style: {
+                                color: "#ff00ff",
+                                fontSize: "14px",
+                                padding: "2px",
+                            },
                             text: "5x"
                         },
                     ]}

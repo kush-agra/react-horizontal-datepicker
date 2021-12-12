@@ -88,14 +88,14 @@
 }
 
 .dayLabel {
-    font-size: 12px;
-    margin: 4px 0 0 0;
+    font-size: 12px !important;
+    margin: 4px 0 0 0 !important;
 }
 
 .dateLabel {
-    font-size: 18px;
+    font-size: 18px !important;
 }
 
 .markedLabel {
-    margin-top: 10px;
+    margin-top: 5px !important;
 }
