@@ -30,11 +30,17 @@ const DateView = ({startDate, lastDate, selectDate, getSelectedDay, primaryColor
     const getMarked = (day) => {
         let markedRes = marked.find(i => isSameDay(i.date, day));
         if (markedRes) {
-            if (!markedRes?.marked) {
+            let resMarked = markedStyle;
+
+            if (markedRes.style) {
+                resMarked = markedRes.style;
+            }
+
+            if (!markedRes.marked) {
                 return;
             }
 
-            return <div style={{ ...markedRes?.style ?? markedStyle }} className={styles.markedLabel}>
+            return <div style={resMarked} className={styles.markedLabel}>
                 {markedRes.text}
             </div>;
         }
@@ -48,8 +54,6 @@ const DateView = ({startDate, lastDate, selectDate, getSelectedDay, primaryColor
 
         const months = [];
         let days = [];
-
-        // const styleItemMarked = marked ? styles.dateDayItemMarked : styles.dateDayItem;
 
         for (let i = 0; i <= differenceInMonths(lastDate, startDate); i++) {
             let start, end;

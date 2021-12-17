@@ -60,7 +60,7 @@
     margin: 0 10px;
 }
 
-.dateDayItem{
+.dateDayItem {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,6 +71,16 @@
     flex-shrink: 0;
 }
 
+.dateDayItemMarked {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    margin: 0 0 0 5px;
+    width: 45px !important;
+    flex-shrink: 0;
+}
+
 .daysContainer {
     display: flex;
     z-index: 1;
@@ -78,10 +88,10 @@
 }
 
 .dayLabel {
-    font-size: 12px;
-    margin: 4px 0 0 0;
+    font-size: 12px !important;
+    margin: 4px 0 0 0 !important;
 }
 
-.dateLabel {
-    font-size: 18px;
+.markedLabel {
+    margin-top: 5px !important;
 }
