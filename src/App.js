@@ -3,7 +3,7 @@ import './App.css';
 import { DatePicker } from "./components/DatePicker";
 
 function App() {
-  const selectedDay = (val) =>{
+  const getSelectedDay = (val) =>{
       console.log(val)
   };
 
@@ -11,13 +11,11 @@ function App() {
 
   return (
     <div className="App">
-        <DatePicker startDate={startDate} 
-                    days={366 * 25}
-                    type="month"
-                    selectDate={new Date(2021, 9, 1)}
-                    getSelectedDay={selectedDay} 
-                    labelFormat={"MMMM yyyy"} 
-                    color={"#374e8c"}/>
+        <DatePicker
+          getSelectedDay={getSelectedDay}
+          endDate={12}
+          color={'#368007'}
+        />
     </div>
   );
 }

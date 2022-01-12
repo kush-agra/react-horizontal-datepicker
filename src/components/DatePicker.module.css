@@ -2,12 +2,14 @@
     display: flex;
     width: 100%;
     background: inherit;
+    scroll-behavior: smooth;
 }
 
 .buttonWrapper {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     background: inherit;
+    padding: 10px;
 }
 
 .button {
@@ -15,8 +17,8 @@
     text-decoration: none;
     cursor: pointer;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 56px;
+    height: 56px;
     color: white;
     font-size: 20px;
     font-weight: bold;
@@ -32,6 +34,7 @@
     overflow-x: scroll;
     scrollbar-width: none;
     margin: 2px 0 2px -40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.24);
     -webkit-overflow-scrolling: touch;
 }
 
@@ -65,38 +68,49 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    margin: 0 0 0 5px;
-    width: 45px;
-    height: 49px;
+    margin: 8px;
     flex-shrink: 0;
 }
 
-.dateDayItemMarked {
+.dateDayItemSelected {
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    margin: 0 0 0 5px;
-    width: 45px;
-    height: 70px;
+    margin: 8px;
     flex-shrink: 0;
 }
+
+.dateDayItemSelected::after {
+    content: "";
+    display: block;
+    position: relative;
+    top: 12px;
+    height: 4px;
+    width: 100%;
+    background-color: #368007;
+}
+
 
 .daysContainer {
     display: flex;
     z-index: 1;
-    margin-top: 10px;
 }
 
 .dayLabel {
     font-size: 12px;
-    margin: 4px 0 0 0;
+    padding:2px;
+}
+
+.weekdayLabel {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 8px;
+    padding:2px;
 }
 
 .dateLabel {
-    font-size: 18px;
-}
-
-.markedLabel {
-    margin-top: 10px;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 14px;
+    padding:2px;
 }

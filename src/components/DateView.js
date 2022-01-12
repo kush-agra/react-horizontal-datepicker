@@ -7,43 +7,23 @@ import {
     differenceInMonths,
     format,
     isSameDay,
+    isYesterday,
+    isToday,
+    isTomorrow,
     lastDayOfMonth,
     startOfMonth
 } from "date-fns";
 
 
-const DateView = ({startDate, lastDate, selectDate, getSelectedDay, primaryColor, labelFormat, marked}) => {
+const DateView = ({startDate, lastDate, selectDate, getSelectedDay}) => {
     const [selectedDate, setSelectedDate] = useState(null);
     const firstSection = {marginLeft: '40px'};
-    const selectedStyle = {fontWeight:"bold",width:"45px",height:"45px",borderRadius:"50%",border:`2px solid ${primaryColor}`,color:primaryColor};
-    const labelColor = {color: primaryColor};
-    const markedStyle = {color: "#8c3737", padding: "2px", fontSize: 12};
-
-    const getStyles = (day) => {
-        return isSameDay(day, selectedDate)?selectedStyle:null;
-    };
 
     const getId = (day) => {
         return isSameDay(day, selectedDate)?'selected':"";
     };
 
-    const getMarked = (day) => {
-        let markedRes = marked.find(i => isSameDay(i.date, day));
-        if (markedRes) {
-            if (!markedRes?.marked) {
-                return;
-            }
-
-            return <div style={{ ...markedRes?.style ?? markedStyle }} className={styles.markedLabel}>
-                {markedRes.text}
-            </div>;
-        }
-
-        return "";
-    };
-
     const renderDays = () => {
-        const dayFormat = "E";
         const dateFormat = "d";
 
         const months = [];
@@ -60,17 +40,19 @@ const DateView = ({startDate, lastDate, selectDate, getSelectedDay, primaryColor
 
             for (let j = start; j < end; j++) {
                 let currentDay = addDays(month, j);
-
+                let dayLabel = '\u00A0';
+                if(isYesterday(currentDay)) dayLabel = "Yesterday";
+                if(isToday(currentDay)) dayLabel = "Today";
+                if(isTomorrow(currentDay)) dayLabel = "Tomorrow";
                 days.push(
                     <div id={`${getId(currentDay)}`}
-                         className={marked ? styles.dateDayItemMarked : styles.dateDayItem}
-                         style={getStyles(currentDay)}
+                         className={isSameDay(currentDay, selectedDate) ? styles.dateDayItemSelected : styles.dateDayItem}
                          key={currentDay}
                          onClick={() => onDateClick(currentDay)}
                     >
-                        <div className={styles.dayLabel}>{format(currentDay, dayFormat)}</div>
-                        <div className={styles.dateLabel}>{format(currentDay, dateFormat)}</div>
-                        {getMarked(currentDay)}
+                        <div className={styles.dayLabel}>{dayLabel}</div>
+                        <div className={styles.weekdayLabel}>{format(currentDay, "EEEE")}</div>
+                        <div className={styles.dateLabel}>{format(currentDay, "MMM. do")}</div>
                     </div>
                 );
             }
@@ -78,9 +60,6 @@ const DateView = ({startDate, lastDate, selectDate, getSelectedDay, primaryColor
                 <div className={styles.monthContainer}
                      key={month}
                 >
-                    <span className={styles.monthYearLabel} style={labelColor}>
-                        {format(month, labelFormat || "MMMM yyyy")}
-                    </span>
                     <div className={styles.daysContainer} style={i===0?firstSection:null}>
                         {days}
                     </div>
