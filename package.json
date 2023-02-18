@@ -28,9 +28,9 @@
     "date-fns": "^2.14.0"
   },
   "peerDependencies": {
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-scripts": "^4.0.3"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "publish:npm": "rm -rf dist && mkdir dist && mkdir dist/components && mkdir dist/global && babel src/components -d dist/components --copy-files && babel src/global -d dist/global --copy-files",
@@ -57,9 +57,9 @@
   "devDependencies": {
     "@babel/cli": "^7.10.1",
     "@babel/preset-react": "^7.10.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1"
   },
   "bit": {
     "env": {
