@@ -30,7 +30,7 @@
   "peerDependencies": {
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^4.0.3"
   },
   "scripts": {
     "publish:npm": "rm -rf dist && mkdir dist && mkdir dist/components && mkdir dist/global && babel src/components -d dist/components --copy-files && babel src/global -d dist/global --copy-files",
@@ -59,7 +59,7 @@
     "@babel/preset-react": "^7.10.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^4.0.3"
   },
   "bit": {
     "env": {
