@@ -28,8 +28,8 @@
     "date-fns": "^2.14.0"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
     "react-scripts": "^5.0.1"
   },
   "scripts": {
@@ -57,8 +57,8 @@
   "devDependencies": {
     "@babel/cli": "^7.10.1",
     "@babel/preset-react": "^7.10.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
     "react-scripts": "^5.0.1"
   },
   "bit": {
